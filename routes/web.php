@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/generateqr', function () {
+    return view('generateqr');
+});
+
+Route::get('/add', function () {
+    return view('add');
+});
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/generateqr', function () {
+    return view('generateqr');
+})->name('generateqr');
