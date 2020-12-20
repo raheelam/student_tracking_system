@@ -111,7 +111,7 @@
         // used to generate the QR Code 
         // with the given data  
         let finalURL = 
-'https://chart.googleapis.com/chart?cht=qr&chl= http://127.0.0.1:8000/generateqr/add.php?roomno=' + 
+'https://chart.googleapis.com/chart?cht=qr&chl= http://127.0.0.1:8000/generateqr/add.php?roomnumber=' + 
           htmlEncode($('#content').val()) + 
           '&chs=160x160&chld=L|0' 
 

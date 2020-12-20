@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/generateqr', function () {
-    return view('generateqr');
-});
 
 Route::get('/add', function () {
     return view('add');
@@ -33,3 +31,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/generateqr', function () {
     return view('generateqr');
 })->name('generateqr');
+
+Route::resource('students', StudentController::class);
