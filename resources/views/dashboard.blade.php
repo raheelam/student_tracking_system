@@ -9,22 +9,10 @@
 
     <hr>
         
-    <div class="container bg-white">
-            <div  class=" ml-14 menu bg-white overflow-hidden shadow-xl">
-             <aside>
-            <nav>
-            <ul>
-            <a href="{{url('/generateqr')}}">Create QR Code for a Room</a>
-            <li>show all students</li>
-            <li>search students</li>
-            </ul>
-            </nav>
-            </aside>
-            <!--    <x-jet-welcome /> -->
-            </div>
-            <div class="result"></div>
-        </div>  
+    <x-slot name="slot">
+       
+   <h1>Welcome to student attendance tracking system {{Auth::user()->username}}</h1>
+    </x-slot> 
    
 </x-app-layout>
 
-<a href="{{ URL::asset('css/dashboard.css')}}">tyy</a>

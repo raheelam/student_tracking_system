@@ -14,12 +14,37 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->paginate(5);
-        return view('welcome', compact('students'))
-    //->with('success','Student record created successfully.');
-      ->with('i', (request()->input('page', 1)-1)* 5);
+        //$dayAfter = datetime('2020-12-20')->modify('+1 day')->format('Y-m-d');
+        $students = Student::latest()->paginate(8);
+     // $students = Student::where('roomnumber', '7')->whereDate('created_at','2020-12-21')->latest()->paginate(10);
+    //  $students = Student::where('roomnumber', '7')->where('created_at','<=','2020-12-20'.' 23:59:59')->where('created_at','<', $dayAfter)->latest()->paginate(10);  
+      return view('view_students_irbd', compact('students'))
+      ->with('i', (request()->input('page', 1)-1)* 8);
         //
     }
+
+    public function getStudentsByroomDate(Request $request){
+        
+        $students = Student::where('roomnumber', $request->input('roomnumber'))->whereDate('created_at',$request->input('date'))->latest()->paginate(8);
+        //$students = Student::where('roomno',$roomno)and('created_date',$date)->latest()->paginate(10);
+        return view('view_students_irbd', compact('students'))
+      ->with('i', (request()->input('page', 1)-1)* 8);
+    }
+
+    public function getStudentsByDates(Request $request){
+        if($request->input('date1') > $request->input('date2')){
+            $students = Student::whereDate('created_at',"<=",$request->input('date1'))->whereDate('created_at',">=",$request->input('date2'))->latest()->paginate(8);
+        }else{
+            $students = Student::whereDate('created_at',"<=",$request->input('date2'))->whereDate('created_at',">=",$request->input('date1'))->latest()->paginate(8);
+        }
+
+       
+        //$students = Student::where('roomno',$roomno)and('created_date',$date)->latest()->paginate(10);
+        return view('view_students_irbd', compact('students'))
+      ->with('i', (request()->input('page', 1)-1)* 8);
+    }
+
+   
 
     /**
      * Show the form for creating a new resource.

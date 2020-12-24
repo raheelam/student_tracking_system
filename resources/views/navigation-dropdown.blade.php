@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -11,10 +11,10 @@
                     </a>
                 </div> -->
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Student Tracking System') }}
+                <!-- Navigation Links  -->
+                <div class=" hidden space-x-2 sm:-my-px sm:flex">
+                    <x-jet-nav-link class="stsh" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Student Attendance Tracking System') }}
                     </x-jet-nav-link>
                 </div>
             </div>
